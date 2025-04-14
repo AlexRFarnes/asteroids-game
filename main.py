@@ -10,6 +10,11 @@ def main():
     dt  = 0
     running = True
 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    Player.containers = (updatable, drawable)
+
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     while running:
@@ -19,16 +24,21 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
+        # group with all updatable objects
+        updatable.update(dt)
+
         # fill the screen with a color to wipe away anything from last frame
         screen.fill("black")
 
-        # draw the player
-        player.draw(screen)
+        # drawable is a group containing all objects that should be drawn on screen
+        for object in drawable:
+            object.draw(screen)
 
         # flip() the display to put your work on screen
         pygame.display.flip()
 
-        dt = clock.tick(60) / 1000 # tick -> millisencods / 1000 -> seconds
+        # limit the framerate to 60 FPS
+        dt = clock.tick(60) / 1000 # tick -> millisencods / 1000 -> seconds (returns the delta time)
         
     pygame.quit()
 
