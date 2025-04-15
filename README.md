@@ -2,6 +2,9 @@
 
 The classic Asteroids game built with Python 3 and Pygame 2
 
+![Screenshot 2025-04-15 130827](https://github.com/user-attachments/assets/60a36e79-75f8-4fe0-a3b9-493af662ff1a)
+
+
 # TODO
 
 - [ ] Add a scoring system
